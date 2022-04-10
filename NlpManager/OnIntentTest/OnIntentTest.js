@@ -3,21 +3,16 @@ const axios = require("axios");
 
 const manager = new NlpManager({ languages: ["en"], forceNER: true });
 
-// Train and save the model.
+// Load pretrained model
 (async () => {
- const manager = new NlpManager();
- manager.load();
-//   manager.addCorpus("./../corpus.json");
-//   await manager.train();
-//   manager.save();
+  manager.load();
   response = await manager.process("en", "Chuck Norris");
+  console.log(response);
   onIntent(response).then((res) => console.log(`The answer is : ${res}`));
 })();
 
 async function onIntent(res) {
-  //  console.log(res.intent)
   if (res.intent === "joke.chucknorris") {
-    //    console.log(GetMyChuckNoJoke())
     return GetMyChuckNoJoke().then((res) => res);
   }
 }

@@ -881,6 +881,15 @@
         "answers": [
           "Amine Ben Hassouna is a computer science professor at Medtech "
         ]
+      },
+      {
+        "intent": "user.grade",
+        "utterances": [
+          "Can I get my grade"
+        ],
+        "answers": [
+          "Yeah sure hold on just wait "
+        ]
       }
     ]
   }
