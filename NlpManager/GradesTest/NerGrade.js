@@ -1,25 +1,35 @@
 const { NlpManager } = require("node-nlp");
 
-const manager = new NlpManager({ threshold: 0.8 });
+getEntities = (utterance) => {
+  const manager = new NlpManager({ threshold: 0.8 });
 
-manager.addNamedEntityText(
-  "function",
-  "grade",
-  ["en"],
-  ["grade", "garde", "midterm", "final"]
-);
-manager.addNamedEntityText(
-  "function",
-  "attendance",
-  ["en"],
-  ["attendance", "attendence", "attndence", "absence", "absences", "abcnese"]
-);
-manager.addRegexEntity(
-  "courseCode",
-  "en",
-  /[A-Za-z]+[A-Za-z]+[A-Za-z]+[0-9]+[0-9]|[A-Za-z]+[A-Za-z]+[0-9]+[0-9]/
-);
+  manager.addNamedEntityText(
+    "examType",
+    "final",
+    ["en"],
+    ["fianl", "fialn", "final"]
+  );
+  manager.addNamedEntityText(
+    "examType",
+    "midterm",
+    ["en"],
+    ["midterm", "Midterm", "medterm", "mid term"]
+  );
+  manager.addNamedEntityText(
+    "Attendance",
+    "attendance",
+    ["en"],
+    ["attendance", "attendence", "attndence", "absence", "absences", "abcnese"]
+  );
+  manager.addRegexEntity(
+    "courseCode",
+    "en",
+    /[A-Za-z]+[A-Za-z]+[A-Za-z]+[0-9]+[0-9]|[A-Za-z]+[A-Za-z]+[0-9]+[0-9]/
+  );
 
-manager
-  .extractEntities("en", "What is my grade in the CS350 final exam")
-  .then((res) => console.log(res.entities));
+  manager
+    .extractEntities("en",utterance)
+    .then((res) => console.log(res.entities));
+};
+
+module.exports = getEntities;

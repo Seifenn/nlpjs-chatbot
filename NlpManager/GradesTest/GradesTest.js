@@ -1,4 +1,5 @@
 const { NlpManager} = require("node-nlp");
+const getEntities = require("./NerGrade")
 
 const manager = new NlpManager({ languages: ["en"], forceNER: true });
 
@@ -7,6 +8,8 @@ const manager = new NlpManager({ languages: ["en"], forceNER: true });
   manager.addCorpus("./../../corpus.json");
   await manager.train();
   manager.save();
-  response = await manager.process("en", "Can I get my grade");
+  utterance = "Can I get my midterm grade for the course cs350";
+  response = await manager.process("en",utterance);
+  getEntities(utterance);
   console.log(response);
 })();
