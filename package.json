@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "regex": "node ./NlpManager/GradesTest/NerGrade.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
